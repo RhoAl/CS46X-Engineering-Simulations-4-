@@ -20,17 +20,22 @@ pub fn build_environment(
     mut materials: ResMut<Assets<StandardMaterial>>,
 ) {
 
-    //experiment
+    //Water Bottle model
     commands.spawn(SceneBundle {
         scene: asset_server.load("WaterBottle/WaterBottleGLTFSeparated.gltf#Scene0"),
         transform: Transform::from_scale(Vec3::splat(5.0)),
         ..default()
     });
+
+    // pomegranate model
+    // Works, but the assets are currently too big for a GitHub upload
+    /* 
     commands.spawn(SceneBundle {
         scene: asset_server.load("pom/pom.gltf#Scene0"),
         transform: Transform::from_xyz(10.0, 5.0, 10.0),
         ..default()
     });
+    */
 
     commands.insert_resource(AmbientLight {
         color: Color::rgb(0.9, 0.9, 1.0),
