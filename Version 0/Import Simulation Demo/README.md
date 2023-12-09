@@ -1,6 +1,9 @@
 *****CITATIONS*****
+
 Original code by Chris Patton (https://github.com/crispyDyne/bevy_car_demo)
+
 Alterations made using the reference of https://bevy-cheatbook.github.io/3d/gltf.html
+
 As well as https://bevyengine.org/examples/3D%20Rendering/load-gltf/
 
 *****BACKGROUND*****
