@@ -2,6 +2,13 @@
 //Alterations made using the reference of https://bevy-cheatbook.github.io/3d/gltf.html
 //As well as https://bevyengine.org/examples/3D%20Rendering/load-gltf/
 
+/*
+Sources for mesh transformations:
+https://docs.rs/bevy/latest/bevy/prelude/struct.Transform.html#method.from_rotation
+https://bevyengine.org/examples/Transforms/transform/
+https://docs.rs/bevy/latest/bevy/prelude/struct.Transform.html
+*/
+
 use std::f32::consts::PI;
 
 use bevy::{
@@ -23,7 +30,8 @@ pub fn build_environment(
     //Water Bottle model
     commands.spawn(SceneBundle {
         scene: asset_server.load("WaterBottle/WaterBottleGLTFSeparated.gltf#Scene0"),
-        transform: Transform::from_scale(Vec3::splat(5.0)),
+        transform: Transform::from_scale(Vec3::splat(50.0))
+        .with_rotation(Quat::from_rotation_x(0.5 * std::f32::consts::PI)),
         ..default()
     });
 
@@ -32,10 +40,13 @@ pub fn build_environment(
     /* 
     commands.spawn(SceneBundle {
         scene: asset_server.load("pom/pom.gltf#Scene0"),
-        transform: Transform::from_xyz(10.0, 5.0, 10.0),
+        transform: Transform::from_xyz(0.0, 0.0, 11.0)
+        .with_scale(Vec3::new(50.0, 50.0, 50.0))
+        .with_rotation(Quat::from_rotation_x(0.5 * std::f32::consts::PI)),
         ..default()
     });
     */
+    
 
     commands.insert_resource(AmbientLight {
         color: Color::rgb(0.9, 0.9, 1.0),
