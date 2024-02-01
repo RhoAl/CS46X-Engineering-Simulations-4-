@@ -17,9 +17,9 @@ use crate::{
 
 #[derive(Resource)]
 pub struct CarDefinition {
-    chassis: Chassis,
+    pub chassis: Chassis,
     suspension: Vec<Suspension>,
-    wheel: Wheel,
+    pub wheel: Wheel,
     drives: Vec<DriveType>,
     brake: Brake,
 }
