@@ -10,6 +10,8 @@ edition = "2021"
 bevy = {workspace = true}
 bevy_obj = {workspace = true}
 
+#bevy_egui = "0.24"
+bevy_egui = {workspace = true}
 rigid_body = {workspace = true}
 bevy_integrator = {workspace = true}
 cameras = {workspace = true}
