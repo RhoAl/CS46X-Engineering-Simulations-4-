@@ -5,6 +5,7 @@ members = [
     "car", 
     "grid_terrain",
     "cameras",
+    "bevy_egui"
     ]
 resolver = "2"
 
@@ -19,6 +20,7 @@ data_viewer = { path = "./data_viewer" }
 rigid_body = {path = "./rigid_body"}
 bevy_integrator = { path = "./integrator" }
 cameras = {  path = "./cameras" }
+bevy_egui = { path = "./bevy_egui"}
 
 # physics
 grid_terrain = { path = "./grid_terrain" }
