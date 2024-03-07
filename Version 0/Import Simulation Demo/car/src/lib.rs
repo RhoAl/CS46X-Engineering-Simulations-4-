@@ -6,4 +6,3 @@ pub mod mesh;
 pub mod physics;
 pub mod setup;
 pub mod tire;
-pub mod ui;

@@ -1,5 +1,5 @@
 use bevy::{
-    prelude::*,
+    prelude::{Mesh, Vec3},
     render::{mesh::Indices, render_resource::PrimitiveTopology},
 };
 use rigid_body::sva::Vector;
@@ -25,15 +25,6 @@ impl GridElement for Plane {
             return None;
         }
     }
-
-    // fn raycast(mut raycast: Raycast, mut gizmos: Gizmos, time: Res<Time>) {
-    //     let t = time.elapsed_seconds();
-    //     let pos = Vec3::new(-10.0, 30.0, 5.0);
-    //     let dir = Vec3::new(0.0, 0.0, -1.0);
-    //     // This is all that is needed to raycast into the world! You can also use the normal, non-debug
-    //     // version (raycast.cast_ray) when you don't need to visualize the ray or intersections.
-    //     raycast.debug_cast_ray(Ray3d::new(pos, dir), &default(), &mut gizmos,);
-    // }
 
     fn mesh(&self) -> Mesh {
         let y_vertex_count = self.subdivisions + 2;
