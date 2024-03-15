@@ -87,6 +87,10 @@ impl PointTire {
         self.joint_entity
     }
 
+    pub fn joint_parent(&self) -> Entity {
+        self.joint_parent
+    }
+
     pub fn points(&self) -> &Vec<Vector> {
         &self.points
     }

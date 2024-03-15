@@ -18,6 +18,7 @@ cameras = {workspace = true}
 
 # physics
 grid_terrain = {workspace = true}
+bevy_mod_raycast = "0.15.0"
 
 [[example]]
 name = "car_json"
