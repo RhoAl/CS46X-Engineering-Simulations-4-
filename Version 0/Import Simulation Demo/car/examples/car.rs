@@ -1,4 +1,5 @@
 use bevy::prelude::*;
+use bevy_egui::{egui, EguiContexts, EguiPlugin};
 use bevy_mod_raycast::prelude::*;
 use car::tire::PointTire;
 use rigid_body::{
@@ -12,6 +13,7 @@ use car::{
     build::{build_car, car_startup_system},
     environment::build_environment,
     setup::{camera_setup, simulation_setup},
+    ui::{ui_example_system, stat_ui},
 };
 use rigid_body::plugin::RigidBodyPlugin;
 
@@ -28,7 +30,10 @@ fn main() {
             environment_setup: vec![camera_setup],
             name: "car_demo".to_string(),
         })
+        .add_plugins(EguiPlugin)
         .insert_resource(car_definition)
+        .add_systems(Update, ui_example_system)
+        .add_systems(Update, stat_ui)
         .add_systems(Startup, car_startup_system)
         .add_systems(Startup, build_environment)
         .add_systems(Update, raycast)
@@ -58,10 +63,10 @@ fn raycast(
             let pos = Vec3::new(center_abs[0] as f32, center_abs[1] as f32, (center_abs[2] as f32) - 0.3);
             let hits = raycast.debug_cast_ray(Ray3d::new(pos, dir), &default(), &mut gizmos,);
 
-            for &(entity, ref intersection_data) in hits {
-                // Access the IntersectionData for each hit
-                println!("{:?}", intersection_data);
-            }
+            // for &(entity, ref intersection_data) in hits {
+            //     // Access the IntersectionData for each hit
+            //     println!("{:?}", intersection_data);
+            // }
         }
     }
 }
