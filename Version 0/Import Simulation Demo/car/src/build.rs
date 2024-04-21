@@ -450,8 +450,8 @@ impl Wheel {
             self.radius,
             self.width,
             self.filter_time,
-            5,
-            51,
+            1,
+            1,
             0.01,
         ));
         wheel_id

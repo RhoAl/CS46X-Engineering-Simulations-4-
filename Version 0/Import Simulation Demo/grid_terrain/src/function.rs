@@ -92,8 +92,8 @@ impl GridElement for Function {
 
     fn mesh(&self) -> Mesh {
         let size = [self.size[0] as f32, self.size[1] as f32];
-        let x_vertex_count = 100;
-        let y_vertex_count = 100;
+        let x_vertex_count = 10;
+        let y_vertex_count = 10;
 
         let num_vertices = (y_vertex_count * x_vertex_count) as usize;
         let num_indices = ((y_vertex_count - 1) * (x_vertex_count - 1) * 6) as usize;

@@ -28,24 +28,24 @@ pub fn build_environment(
 ) {
 
     //Water Bottle model
-    commands.spawn(SceneBundle {
-        scene: asset_server.load("WaterBottle/WaterBottleGLTFSeparated.gltf#Scene0"),
-        transform: Transform::from_scale(Vec3::splat(50.0))
-        .with_rotation(Quat::from_rotation_x(0.5 * std::f32::consts::PI)),
-        ..default()
-    });
+    // commands.spawn(SceneBundle {
+    //     scene: asset_server.load("WaterBottle/WaterBottleGLTFSeparated.gltf#Scene0"),
+    //     transform: Transform::from_scale(Vec3::splat(50.0))
+    //     .with_rotation(Quat::from_rotation_x(0.5 * std::f32::consts::PI)),
+    //     ..default()
+    // });
 
     // pomegranate model
     // Works, but the assets are currently too big for a GitHub upload
-    /* 
+
     commands.spawn(SceneBundle {
-        scene: asset_server.load("pom/pom.gltf#Scene0"),
+        scene: asset_server.load("Fruit/Fruit.gltf#Scene0"),
         transform: Transform::from_xyz(0.0, 0.0, 11.0)
         .with_scale(Vec3::new(50.0, 50.0, 50.0))
         .with_rotation(Quat::from_rotation_x(0.5 * std::f32::consts::PI)),
         ..default()
     });
-    */
+    
     
 
     commands.insert_resource(AmbientLight {
