@@ -51,7 +51,7 @@ fn raycast(
             let xp0 = parent.x.inverse(); // spatial transform from the parent joint to absolute coordinates
             let center_abs = xp0.transform_point(Vector::zeros()); // center of the tire in absolute coordinates
 
-            // let pos = Vec3::new((center_abs[0] as f32), (center_abs[1] as f32), (center_abs[2] as f32) - 0.1);
+            // let pos = Vec3::new((center_abs[0] as f32), (center_abs[1] as f32), (center_abs[2] as f32));
             // let dir = Vec3::new(0.0, 0.0, -1.0);
             // let hits = raycast.debug_cast_ray(Ray3d::new(pos, dir), &default(), &mut gizmos,);
 

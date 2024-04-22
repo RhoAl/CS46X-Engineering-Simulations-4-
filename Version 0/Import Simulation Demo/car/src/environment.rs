@@ -40,7 +40,7 @@ pub fn build_environment(
 
     commands.spawn(SceneBundle {
         scene: asset_server.load("Fruit/Fruit.gltf#Scene0"),
-        transform: Transform::from_xyz(0.0, 0.0, 11.0)
+        transform: Transform::from_xyz(0.0, -100.0, 0.0)
         .with_scale(Vec3::new(50.0, 50.0, 50.0))
         .with_rotation(Quat::from_rotation_x(0.5 * std::f32::consts::PI)),
         ..default()
