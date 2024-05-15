@@ -1,10 +1,12 @@
-use bevy::prelude::*;
+use bevy::{ecs::entity, prelude::*};
 use bevy_mod_raycast::prelude::*;
 use grid_terrain::{GridTerrain, Interference};
 use rigid_body::{
     joint::Joint,
     sva::{Force, Vector},
 };
+
+use crate::build::Wheel;
 
 #[derive(Component)]
 pub struct PointTire {
@@ -103,8 +105,19 @@ pub fn point_tire_system(
     mut tire_query: Query<&mut PointTire>,
     mut query_joints: Query<&mut Joint>,
     grid_terrain: Res<GridTerrain>,
+    // _wheel: Query<&mut Wheel>,
+    _wheel: Res<Wheel>,
 ) {
+    // TODO: query the tire model entity and set the filter to an entity from it, then set up the early exit test to occur when the ray hits it
     let terrain = grid_terrain.as_ref();
+    let wheel = _wheel.as_ref();    //Shared wheel data
+
+    //Creating raycast settings
+    // let filter = |entity| wheel.contains(entity);
+
+
+
+
     for mut tire in tire_query.iter_mut() {
         if let Ok([mut joint, parent]) =
             query_joints.get_many_mut([tire.joint_entity, tire.joint_parent])
@@ -124,11 +137,17 @@ pub fn point_tire_system(
             let mut active_points = 0.0;
             for point in tire.points.iter() {
                 let point_abs = xp0.transform_point(*point); // point in absolute coordinates
+                let center_abs = xp0.transform_point(Vector::zeros()); // center of the tire in absolute coordinates
 
-                let pos = Vec3::new((point_abs[0] as f32), (point_abs[1] as f32), (point_abs[2] as f32) - 0.1);
-                let dir = Vec3::new(0.0, 0.0, 1.0);
+                // pos z - 0.1 results in the car falling through the default terrain, but landing on the imported model
+                let pos = Vec3::new((point_abs[0] as f32), (point_abs[1] as f32), (point_abs[2] as f32) - 0.01);    //Spawn ray below tire
+                // let pos = Vec3::new((center_abs[0] as f32), (center_abs[1] as f32), (center_abs[2] as f32) - 0.1);    //Spawn ray in the center of the tire
+
+                // let dir = Vec3::new(0.0, 0.0, 1.0); // pointing up
+                let dir = Vec3::new(0.0, 0.0, -1.0); // pointing down
                 let hits = raycast.debug_cast_ray(Ray3d::new(pos, dir), &default(), &mut gizmos,);
 
+                //Raycast Interference
                 for &(entity, ref intersectionData) in hits {
                     let pos_ray: Vec3 = intersectionData.position();
                     let normal_ray: Vec3 = intersectionData.normal();
@@ -145,7 +164,7 @@ pub fn point_tire_system(
                     active_points += active;
                 }
 
-                // Uncomment this for working interference
+                // Uncomment this for default interference
                 // if let Some(contact) = terrain.interference(point_abs) {
                 //     let active = (contact.magnitude / tire.activation_length).clamp(0.0, 1.0);
                 //     contacts.push((contact, point_abs, active));
