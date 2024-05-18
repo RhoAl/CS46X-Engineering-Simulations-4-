@@ -24,3 +24,11 @@ Our individual team members are available for contact via email.
 - Robert Jacobson (jacorobe@oregonstate.edu)
 - Levi James (jameslev@oregonstate.edu))
 - Alexander Yang Rhoads (rhoadsal@oregonstate.edu)
+
+## Help
+### How to Run
+- Export the "Import Simulation Folder to a new directory
+- In a command terminal, go to said new directory
+- Run the command "cargo run --example car"
+## Link to the Code Repository
+- https://github.com/RhoAl/CS46X-Engineering-Simulations-4-Car-Sim-And-Terrain.git
