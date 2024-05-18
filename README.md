@@ -8,3 +8,6 @@ Our team consists of four core members, with supervision from our project partne
 - Robert Jacobson
 - Levi James 
 - Alexander Yang Rhoads
+
+## Project Description
+The 3D simulator seeks to be equal parts toy and tool, aiming for an audience of both students wanting to study 3D space, as well as aspiring artists and developers, who want to plan out areas for their own projects. It's a car simulation that features collision and statistics for every new imported environment model. This allows users to get a wide breadth of 3D assests without having to code things like their own physics and collision system in prior. Even for low level users, the act of exploring these models is fun. 
