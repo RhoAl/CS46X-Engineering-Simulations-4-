@@ -125,17 +125,20 @@ pub fn point_tire_system(
             for point in tire.points.iter() {
                 let point_abs = xp0.transform_point(*point); // point in absolute coordinates
 
-                let pos = Vec3::new((point_abs[0] as f32), (point_abs[1] as f32), (point_abs[2] as f32) - 0.1);
-                let dir = Vec3::new(0.0, 0.0, 1.0);
-                let hits = raycast.debug_cast_ray(Ray3d::new(pos, dir), &default(), &mut gizmos,);
+                let pos = Vec3::new((point_abs[0] as f32), (point_abs[1] as f32), (point_abs[2] as f32 + tire.rolling_radius as f32 - 0.1));
+                let dir = Vec3::new(0.0, 0.0, -1.0);
+
+                
+
+                let hits = raycast.debug_cast_ray(Ray3d::new(pos, dir), &default(), &mut gizmos);
 
                 for &(entity, ref intersectionData) in hits {
                     let pos_ray: Vec3 = intersectionData.position();
                     let normal_ray: Vec3 = intersectionData.normal();
                     let pos_ray64: Vector = Vector::new(pos_ray.x as f64, pos_ray.y as f64, pos_ray.z as f64);
-                    let normal_ray64: Vector = Vector::new(normal_ray.x as f64, normal_ray.y as f64, normal_ray.z as f64);
-                    let mag64: f64 = tire.rolling_radius - intersectionData.distance() as f64;
-                    if (mag64 < 0.0) {
+                    let normal_ray64: Vector = Vector::new(0.0, 0.0, 1.0);
+                    let mag64: f64 = tire.rolling_radius - 0.1 - intersectionData.distance() as f64;
+                   if (mag64 < 0.0) {
                         continue;
                     }
                     let contact = Interference{ magnitude: mag64, position: pos_ray64, normal: normal_ray64 };
@@ -144,13 +147,6 @@ pub fn point_tire_system(
                     contacts.push((contact, point_abs, active));
                     active_points += active;
                 }
-
-                // Uncomment this for working interference
-                // if let Some(contact) = terrain.interference(point_abs) {
-                //     let active = (contact.magnitude / tire.activation_length).clamp(0.0, 1.0);
-                //     contacts.push((contact, point_abs, active));
-                //     active_points += active;
-                // }
             }
 
             // calculate forces for each contact point

@@ -22,7 +22,7 @@ fn main() {
     // Create App
     App::new()
         .add_plugins(RigidBodyPlugin {
-            time: SimTime::new(0.005, 0.0, None),
+            time: SimTime::new(0.01, 0.0, None),
             solver: Solver::RK4,
             simulation_setup: vec![simulation_setup],
             environment_setup: vec![camera_setup],

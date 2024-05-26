@@ -35,18 +35,31 @@ pub fn build_environment(
     //     ..default()
     // });
 
-    // pomegranate model
-    // Works, but the assets are currently too big for a GitHub upload
+    // low-quality hallway model
+
+    // commands.spawn(SceneBundle {
+    //     scene: asset_server.load("LowQualHall/hall2.gltf#Scene0"),
+    //     transform: Transform::from_xyz(0.0, 20.0, -1.0)
+    //     .with_scale(Vec3::new(5.0, 5.0, 5.0))
+    //     .with_rotation(Quat::from_rotation_x(0.5 * std::f32::consts::PI)),
+    //     ..default()
+    // });
 
     commands.spawn(SceneBundle {
-        scene: asset_server.load("Fruit/Fruit.gltf#Scene0"),
-        transform: Transform::from_xyz(0.0, -100.0, 0.0)
-        .with_scale(Vec3::new(50.0, 50.0, 50.0))
+        scene: asset_server.load("Fruit2/fruit2.gltf#Scene0"),
+        transform: Transform::from_xyz(0.0, 20.0, -7.5)
+        .with_scale(Vec3::new(30.0, 30.0, 30.0))
         .with_rotation(Quat::from_rotation_x(0.5 * std::f32::consts::PI)),
         ..default()
     });
     
-    
+    // commands.spawn(SceneBundle {
+    //     scene: asset_server.load("blender_models/Thin_Wide/thin wide.gltf#Scene0"),
+    //     transform: Transform::from_xyz(-5.0, 20.0, -1.0)
+    //     .with_scale(Vec3::new(5.0, 5.0, 5.0))
+    //     .with_rotation(Quat::from_rotation_x(0.5 * std::f32::consts::PI)),
+    //     ..default()
+    // });
 
     commands.insert_resource(AmbientLight {
         color: Color::rgb(0.9, 0.9, 1.0),
@@ -100,6 +113,6 @@ pub fn build_environment(
     let grid_terrain = GridTerrain::new(elements, [size, size]);
     let empty_parent = commands.spawn(SpatialBundle::default()).id();
 
-    grid_terrain.build_meshes(&mut commands, &mut meshes, &mut materials, empty_parent);
+    // grid_terrain.build_meshes(&mut commands, &mut meshes, &mut materials, empty_parent);
     commands.insert_resource(grid_terrain);
 }
