@@ -20,7 +20,11 @@ The specific new features are a new UI to track statics and maps, the ability to
 - A greater number of physics statistics. Currently we only have speed and throttle of the car. In the future, we'd like to implement more statistics.
 
 ## FOLDER STRUCTURE
-- The car folder contains the 
+- The car folder contains source folders for the car itself, the environment output, the UI, the raycast system, and the main function
+- The tire.rs file in car/src/ control the collision system associated with the tires, including the raycast system itself.
+- The grid_terrain folder controls environment system that is used to output an environment elsewhere throughout the program
+- The rigid_body folder controls the physics system.
+- 
 
 ## HOW TO RUN
 The demo can be ran by entering this into a Linux command line or an equivalent:
