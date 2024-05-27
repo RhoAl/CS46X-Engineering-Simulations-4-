@@ -27,8 +27,9 @@ Our individual team members are available for contact via email.
 
 ## Help
 ### How to Run
-- Export the "Import Simulation Folder to a new directory
-- In a command terminal, go to said new directory
+- Go into the "src" folder in your command terminal of choice
 - Run the command "cargo run --example car"
+- Further information can be found in the README.md found in the src folder
+  
 ## Link to the Code Repository
 - https://github.com/RhoAl/CS46X-Engineering-Simulations-4-Car-Sim-And-Terrain.git
