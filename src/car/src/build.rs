@@ -407,14 +407,14 @@ impl Wheel {
 
         let mut wheel_e = commands.spawn((
             ry,
-            MeshDef {
-                mesh_type: MeshTypeDef::Wheel {
-                    radius: self.radius as f32,
-                    width: self.width as f32,
-                },
-                transform: TransformDef::Identity,
-                color: Color::rgb(0.5, 0.5, 1.0),
-            },
+            // MeshDef {
+            //     mesh_type: MeshTypeDef::Wheel {
+            //         radius: self.radius as f32,
+            //         width: self.width as f32,
+            //     },
+            //     transform: TransformDef::Identity,
+            //     color: Color::rgb(0.5, 0.5, 1.0),
+            // },
         ));
 
         // add driven and braked components
@@ -450,8 +450,8 @@ impl Wheel {
             self.radius,
             self.width,
             self.filter_time,
-            5,
-            51,
+            1,
+            1,
             0.01,
         ));
         wheel_id

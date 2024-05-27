@@ -1,5 +1,6 @@
 use bevy::prelude::*;
-use grid_terrain::GridTerrain;
+use bevy_mod_raycast::prelude::*;
+use grid_terrain::{GridTerrain, Interference};
 use rigid_body::{
     joint::Joint,
     sva::{Force, Vector},
@@ -58,7 +59,7 @@ impl PointTire {
                 let point = Vector::new(
                     radius * theta_point.sin(),
                     y_pos,
-                    radius * theta_point.cos(),
+                    -(radius * theta_point.cos()),
                 );
                 points.push(point);
                 y_pos += y_step;
@@ -97,6 +98,8 @@ impl PointTire {
 }
 
 pub fn point_tire_system(
+    mut raycast: Raycast, 
+    mut gizmos: Gizmos, 
     mut tire_query: Query<&mut PointTire>,
     mut query_joints: Query<&mut Joint>,
     grid_terrain: Res<GridTerrain>,
@@ -114,12 +117,33 @@ pub fn point_tire_system(
             let center_abs = xp0.transform_point(Vector::zeros()); // center of the tire in absolute coordinates
             let lateral_abs = x0i * Vector::y(); // tire lateral direction in absolute coordinates
 
+            
+
             // identify points in contact with the terrain
             let mut contacts = Vec::new();
             let mut active_points = 0.0;
             for point in tire.points.iter() {
-                let point_abs = x0i.transform_point(*point); // point in absolute coordinates
-                if let Some(contact) = terrain.interference(point_abs) {
+                let point_abs = xp0.transform_point(*point); // point in absolute coordinates
+
+                let pos = Vec3::new((point_abs[0] as f32), (point_abs[1] as f32), (point_abs[2] as f32 + tire.rolling_radius as f32 - 0.1));
+                let dir = Vec3::new(0.0, 0.0, -1.0);
+
+                
+                //Switching between debug and non-debug raycast
+                // let hits = raycast.debug_cast_ray(Ray3d::new(pos, dir), &default(), &mut gizmos);
+                let hits = raycast.cast_ray(Ray3d::new(pos, dir), &default());
+
+                for &(entity, ref intersectionData) in hits {
+                    let pos_ray: Vec3 = intersectionData.position();
+                    let normal_ray: Vec3 = intersectionData.normal();
+                    let pos_ray64: Vector = Vector::new(pos_ray.x as f64, pos_ray.y as f64, pos_ray.z as f64);
+                    let normal_ray64: Vector = Vector::new(0.0, 0.0, 1.0);
+                    let mag64: f64 = tire.rolling_radius - 0.1 - intersectionData.distance() as f64;
+                   if (mag64 < 0.0) {
+                        continue;
+                    }
+                    let contact = Interference{ magnitude: mag64, position: pos_ray64, normal: normal_ray64 };
+                    
                     let active = (contact.magnitude / tire.activation_length).clamp(0.0, 1.0);
                     contacts.push((contact, point_abs, active));
                     active_points += active;

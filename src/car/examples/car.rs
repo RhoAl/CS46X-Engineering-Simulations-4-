@@ -24,7 +24,7 @@ fn main() {
     // Create App
     App::new()
         .add_plugins(RigidBodyPlugin {
-            time: SimTime::new(0.002, 0.0, None),
+            time: SimTime::new(0.01, 0.0, None),
             solver: Solver::RK4,
             simulation_setup: vec![simulation_setup],
             environment_setup: vec![camera_setup],
@@ -36,7 +36,7 @@ fn main() {
         .add_systems(Update, stat_ui)
         .add_systems(Startup, car_startup_system)
         .add_systems(Startup, build_environment)
-        .add_systems(Update, raycast)
+        // .add_systems(Update, raycast)
         .run();
 }
 

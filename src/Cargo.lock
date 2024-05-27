@@ -1202,6 +1202,7 @@ name = "car"
 version = "0.1.0"
 dependencies = [
  "bevy",
+ "bevy_egui",
  "bevy_integrator",
  "bevy_mod_raycast",
  "bevy_obj",
