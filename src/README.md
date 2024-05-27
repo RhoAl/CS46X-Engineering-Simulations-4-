@@ -24,7 +24,9 @@ The specific new features are a new UI to track statics and maps, the ability to
 - The tire.rs file in car/src/ control the collision system associated with the tires, including the raycast system itself.
 - The grid_terrain folder controls environment system that is used to output an environment elsewhere throughout the program
 - The rigid_body folder controls the physics system.
-- 
+- The integrator folder controls the integration of the various subsystems
+- The cameras folder controls the camera of the simulation.
+- The bevy_egui and bevy_mod_raycast folders are third-party Bevy modules used to run the simulation.
 
 ## HOW TO RUN
 The demo can be ran by entering this into a Linux command line or an equivalent:
