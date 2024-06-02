@@ -37,3 +37,4 @@ Currently the wheel models on the car are set to be invisible. There is a reason
 - The code that controls the wheel model can be found in src/car/src/build.rs, specifically the MeshDef section of the wheel_e spawn declaration, found in the implementation of the Wheel component.
 
 ## UI
+The UI of the simulator can be found in the upper left corner. Its current features are tracking a set of physic statistics and an unimplemented map change feature.
