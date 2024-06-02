@@ -35,3 +35,5 @@ Currently the wheel models on the car are set to be invisible. There is a reason
   - Unfortunately the filter was unable to be implemented by the end of development
   - The draft of the filter solution relied on a query (https://docs.rs/bevy/latest/bevy/prelude/struct.Query.html) to check if there was NoRaycast entity in any model; if so, then the raycast would not collect data from it
 - The code that controls the wheel model can be found in src/car/src/build.rs, specifically the MeshDef section of the wheel_e spawn declaration, found in the implementation of the Wheel component.
+
+## UI
