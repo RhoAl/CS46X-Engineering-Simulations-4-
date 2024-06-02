@@ -42,6 +42,5 @@ Currently the wheel models on the car are set to be invisible. There is a reason
 The UI of the simulator can be found in the upper left corner. Its current features are tracking a set of physic statistics and an unimplemented map change feature.
 - This uses the Bevy EGUI crate (https://crates.io/crates/bevy-inspector-egui)
 - Documentation for the crate can be found here: https://docs.rs/bevy_egui/latest/bevy_egui/
-- The statistics element tracks the speed and throttle of the car
+- The statistics element tracks the speed and throttle of the car. More have yet to be implemented.
 - The file controling it can be found at src/car/src/ui.rs
-- 
