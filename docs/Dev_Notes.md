@@ -1,4 +1,4 @@
-# Program Structure
+# Developer Notes
 
 This document covers important details about regarding the underlying systems of the car simulator. It will list out important details about how various aspects of the simulator works, as well as how to change their properties.
 
