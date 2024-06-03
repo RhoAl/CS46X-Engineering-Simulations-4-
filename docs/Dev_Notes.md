@@ -1,9 +1,7 @@
 # Developer Notes
-
 This document covers important details about regarding the underlying systems of the car simulator. It will list out important details about how various aspects of the simulator works, as well as how to change their properties.
 
 ## Raycast Collision
-
 Arguably the main feature added by our team. Using a Bevy raycast addon (https://crates.io/crates/bevy_mod_raycast), we're able to cast a ray that sends back location data. This information is sent back to the car's location
 system to simulate collision. Doing this allows for a collision system that works indepedent of if a model has a collision system applied to it, allowing for the insertion of 3D models into the simulator without needing to
 do addition collision work.
@@ -51,4 +49,14 @@ The program has a set of main subfolders: car, camera, rigid_body, integrator, c
 - Once compiled, the code will produce another subfolder called "target"
   - This contains the results of the compilation, like the executable file
 - The bevy_egui and bevy_mod_raycast folders contain the data for the addons of the simulator
--  
+- The car folder contains the assets, examples, and src subfolders  
+  - The asset folder contains 3D models and their texture files
+  - The examples the car.rs file, which contains the main() function, which calls the various systems of the simulator
+  - src contains all files related directly to the simulator, but excluding its subsystems (with the exception of raycasting and UI)
+    - Specifically files the specify qualities of the car can be found here (tires, chassis, control, environment)
+    - Raycast and UI related files are also found here
+- The grid_terrain folder contains files relating to how the simulator builds non-imported environments
+- The rigid_body folder relates to the physics system
+- The integrator folder relates to the how the subsystems of the simulator come together
+
+  
