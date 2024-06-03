@@ -11,7 +11,7 @@ do addition collision work.
 the file ("use bevy_mod_raycast::prelude::*;").
 - Documentation regarding the library can be found here: https://docs.rs/bevy_mod_raycast/latest/bevy_mod_raycast/
 - The program specifically implements the Immediate Mode Raycasting API
-- The rays can be cast in debug mode, which makes the visible, but also affects how the car spawns, requiring the environment to be adjusted in different ways for both debug and regular modes. Otherwise the car will fall through the environment should it spawn within an area.
+- The rays can be cast in debug mode, which makes the ray visible, but also affects how the car spawns, requiring the environment to be adjusted in different ways for both debug and regular modes. Otherwise the car will fall through the environment should it spawn within the environment model.
 - The are two key pieces of code that the function declares for the raycast:
   - The declaration that actually casts the ray: let hits = raycast.cast_ray(Ray3d::new(pos, dir), &default());
   - The code that pushes the raycast data into the tire contact system: contacts.push((contact, point_abs, active));
