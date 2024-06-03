@@ -24,6 +24,7 @@ The raycast collision system allows for the user to insert any 3D model (that th
 - The folder for the environment models are found in src/car/assets
 - Currently there are two types of enviroments: imported glTFs and models made by the pre-existing car simulator
 - The current method of importing models is command spawning them in the build_environment function via commands.spawn(SceneBundle{});
+  - The code can be copied to spawn new glTF models  
 - Imported models can only use 8-bit RGB textures; 16-bit RGB textures cause Bevy to crash and have to be converted to 8-bit
 - This line controls the building of the non-imported meshes: grid_terrain.build_meshes(&mut commands, &mut meshes, &mut materials, empty_parent);
   - Can be commented out to prevent the non-imported model from spawning
@@ -44,3 +45,10 @@ The UI of the simulator can be found in the upper left corner. Its current featu
 - Documentation for the crate can be found here: https://docs.rs/bevy_egui/latest/bevy_egui/
 - The statistics element tracks the speed and throttle of the car. More have yet to be implemented.
 - The file controling it can be found at src/car/src/ui.rs
+
+## Program Structure
+The program has a set of main subfolders: car, camera, rigid_body, integrator, cameras, and grid_terrain
+- Once compiled, the code will produce another subfolder called "target"
+  - This contains the results of the compilation, like the executable file
+- The bevy_egui and bevy_mod_raycast folders contain the data for the addons of the simulator
+-  
