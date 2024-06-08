@@ -59,4 +59,9 @@ The program has a set of main subfolders: car, camera, rigid_body, integrator, c
 - The rigid_body folder relates to the physics system
 - The integrator folder relates to the how the subsystems of the simulator come together
 
+## Bevy
+- Uses the latest version of Rust
+- Uses Bevy version 0.11.2
+- Uses Raycast version 0.15.0
+
   
