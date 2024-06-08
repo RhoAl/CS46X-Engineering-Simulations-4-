@@ -3,6 +3,8 @@ A 3D Car Simulation by the Don't Hit The Stairs team.
 Made for the CS46X classes, the simulation features advanced physics recreation, utilizing statistical recordings and raytracing to create a detailed experiance.
 
 ## Expo Video
+https://media.oregonstate.edu/media/t/1_czuayvxo
+[![Expo Video](https://cfvod.kaltura.com/p/391241/sp/39124100/thumbnail/entry_id/1_i26woxf0/version/100011/width/1470/height/855)](https://media.oregonstate.edu/media/t/1_czuayvxo)
 
 ## Team Members
 Our team consists of four core members, with supervision from our project partner Chris Patton:
